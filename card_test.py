@@ -2,9 +2,6 @@ import pytest
 from PyQt5.QtWidgets import QApplication
 from memory_cards import MainWindow, TrainingWindow, CreatCardsWindow, ListCardsWindow, StatisticsWindow
 
-import pytest
-from PyQt5.QtWidgets import QApplication
-
 
 @pytest.fixture(scope="session")
 def qapp():
