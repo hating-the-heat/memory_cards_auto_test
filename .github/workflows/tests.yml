@@ -10,33 +10,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v3
         with:
           python-version: 3.9
-
-      - name: Install Xvfb (if needed)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb
-
-      - name: Set up Xvfb
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 &
-          export DISPLAY=:99
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pytest pytest-cov PyQt5 pytest-mock
-
       - name: Run tests with coverage
         run: |
           pytest --cov=memory_cards --cov-report term-missing card_test.py -v --tb=short
-
+      - name: Run tests with coverage
+        run: |
+          pytest --cov=memory_cards --cov-report term-missing card_test.py
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
