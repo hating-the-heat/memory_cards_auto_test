@@ -15,7 +15,6 @@ class MainWindow(QMainWindow, Ui_mainWindow): # основное окно
         super().__init__()
         self.setupUi(self)
 
-
         self.true_answer = 0
         self.false_answer = 0
         self.all_cards = {}
